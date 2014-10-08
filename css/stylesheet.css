@@ -1,0 +1,681 @@
+@charset "utf-8";
+
+/*
+** Stylesheet by Roel Victor Antonisse (NL / 1984)
+** Mobile first - progressive enhanced
+** Utilities used:
+** a) Normalize.css - 
+** b) Modernizr.js - 
+*/
+
+/*****************
+ GENERAL SETTINGS
+*****************/
+	/* Set base typography */
+	body {
+		font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+		font-size: 12px;
+		color: #333;
+		line-height: 1.5em;
+		letter-spacing: 0.075em;
+	}
+
+	/* restore line-height for bigger font-sizes like headings */
+	h1, h2, h3 {
+		line-height: normal;
+	}
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	/* Set images and video to 100% width */
+	img, video {
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+	}
+
+/*********************
+ LAYOUT & POSITIONING
+*********************/
+	/* Header */
+	body > header {
+		position: relative;
+		text-align: center;
+		padding-top: 5em;
+		padding-bottom: 1em;
+		background-color: #eee;
+		background-image: url('img/background/driehoekjes.png');
+		background-attachment: fixed;
+		background-position: left center;
+	}
+	body > header h1{
+		display: none;
+	}
+	body > header > img {
+		width: 320px;
+	}
+	/* Nav */
+	nav {
+		z-index: 1000;
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 4em;
+		background-color: #e60;
+		background-color: rgba(239,96,0,0.9);
+		box-shadow: 0 0 10px 5px #333;
+	}
+	/* mobile (app) buttons */
+	nav > a {
+		z-index: 999;
+		display: block;
+		float: right;
+		width: 25%;
+		height: 100%;
+		font-size: 1.2em;
+		line-height: 3em;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #fff;
+		transition: all 0.5s ease;
+		background-color: #e60;
+		background-color: rgba(239,96,0,0.9);
+	}
+	nav > a:hover {
+		color: #f60;
+		background-color: #eee;
+		background-color: rgba(240,240,240,0.9);
+	}
+
+	/* Main navigation */
+	nav ol, nav li {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		text-align: left;
+	}
+	nav > ol {
+		overflow: auto;
+		z-index: 1000;
+		position: fixed;
+		top: 0;
+		right: -100%;
+		width: 100%;
+		height: 100%;
+		font-size: 1.5em;
+		line-height: 2em;
+		transition: all 0.5s ease;
+	}
+	nav > ol:target {
+		right: 0%;
+	}
+	nav li {
+		border-top: 1px solid #eee;
+	}
+	nav li:first-child {
+		border-top: 0;
+	}
+	nav > ol > li {
+		background-color: #ccc;
+	}
+	nav > ol > li li {
+		padding-left: 1em;
+		background-color: #fff;
+	}
+	nav li a {
+		display: block;
+		padding: 0 0.5em;
+		color: #333;
+		text-decoration: none;
+		transition: all 0.5s ease;
+	}
+	nav li a:hover,
+	nav li a:active {
+		color: #fff;
+		background-color: #bbb;
+	}
+	nav li a:after {
+		float: right;
+		content: "\0025B6";
+	}
+
+	/* Unicode triangle arrows
+		up: \0025B2
+		right: \0025B6
+		down: \0025BC
+		left: \0025C0
+	*/
+
+	/* Article / main */
+	body > article {
+		width: 100%;
+	}
+	/* Content heading */
+	body > article > h1 {
+		margin: 0;
+		padding: 0.5em;
+		color: #fff;
+		background-color: #e60;
+		background-color: rgba(239,96,0,0.9);
+		text-align: center;
+		text-shadow: 1px 1px 1px #333;
+	}
+	article section {
+		padding-top: 1em;
+	}
+	/* Other article sub headings */
+	body > article > section > h1 {
+		margin: 0;
+		padding: 0 10px;
+	}
+	
+	/* Article paragraphs */
+	article p {
+		padding: 0 10px;
+		margin: 0;
+	}
+	article p:last-of-type {
+		margin-bottom: 2em;
+	}
+	article p ~ p {
+		text-indent: 3em;
+	}
+	article dl,
+	article dd,
+	article dt {
+		margin: 0;
+		padding: 0;
+	}
+	article dt {
+		font-weight: bold;
+	}
+	article ol,
+	article ul {
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	/* Article anchors */
+	article a {
+		color: #e60;
+		text-decoration: underline;
+	}
+	article a:hover {
+		color: inherit;
+		text-decoration: none;
+	}
+
+
+	/* Article asides */
+	article aside {
+		margin: 1em;
+		padding: 1em;
+		border: 1px solid #eee;
+	}
+
+
+	/* Aside / main */
+	body > aside {
+		z-index: 100;
+		overflow: auto;
+		position: fixed;
+		top: 0;
+		left: 100%;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+		transition: left 0.5s ease;
+	}
+	body > aside:target {
+		left: 0;
+	}
+	body > aside > section {
+		padding-top: 4em;
+	}
+	body > aside > section:last-child {
+		text-align: center;
+	}
+
+	body > aside > section > h1 {
+		margin: 0;
+		padding: 0.25em 0.5em;
+		text-align: left;
+		color: #fff;
+		background-color: #e60;
+		background-color: rgba(239,96,0,0.9);
+		text-shadow: 1px 1px 1px #333;
+	}
+	body > aside > section > article {
+		padding-top: 2em;
+		border-top: 1px solid #eee;
+	}
+	body > aside article:first-of-type {
+		padding-top: 0;
+		border-width: 0;
+	}
+
+	/* Footer */
+	body > footer {
+		overflow: hidden;
+		clear: both;
+		background-color: #eee;
+	}
+	body > footer h1 {
+		display: none;
+	}
+	body > footer a {
+		color: #ee6600;
+		text-decoration: underline;
+	}
+	body > footer a:hover {
+		color: inherit;
+		text-decoration: none;
+	}
+	body > footer li {
+		list-style-type: none;
+	}
+	body > footer > section:nth-of-type(3) {
+		clear: left;
+		float: left;
+		width: 100%;
+	}
+	body > footer > section:nth-of-type(3) p:nth-last-of-type(-n+3) {
+		clear: left;
+		margin: 0;
+	}
+	body > footer > section:nth-of-type(4),
+	body > footer > section:nth-of-type(5) {
+		float: left;
+		width: 100%;
+		clear: both;
+	}
+	body > footer > section:nth-of-type(5) {
+		padding-top: 1em;
+		text-align: center;
+	}
+
+	body > footer > section > ol > li {
+		float: left;
+		margin: 0;
+		padding: 0 0 1em 0;
+		width: 50%;
+	}
+	body > footer section ol,
+	body > footer section h2,
+	body > footer section p {
+		padding: 0 10px;
+	}
+	body > footer form[name="form-search"] {
+		z-index: 1000;
+		position: fixed;
+		bottom: -10em;
+		left: 0;
+		width: 100%;
+		height: 4em;
+		background-color: #e60;
+		transition: bottom 0.5s ease;
+	}
+	body > footer form[name="form-search"] label {
+		display: none;
+	}
+	body > footer form[name="form-search"] input {
+		float: right;
+		line-height: 3em;
+		border-width: 0;
+		padding: 0.25em 0.5%;
+		margin: 0.25em 0.5%;
+	}
+	body > footer form[name="form-search"] input[type="search"] {
+		width: 73%;
+	}
+	body > footer form[name="form-search"] input[type="submit"] {
+		width: 23%;
+	}
+	body > footer section:target form[name="form-search"] {
+		bottom: 0;
+	}
+/**********
+ MODERNIZR
+**********/
+/* :target support */
+
+/* box-shadow support */
+
+/* text-shadow support */
+
+/**************
+ MEDIA QUERIES
+**************/
+/* Landscape device orientation */
+@media screen and (max-width: 640px) and (orientation: landscape) {
+	body > header,
+	body > article,
+	body > aside,
+	body > footer {
+		width: 90%;
+	}
+	body > header {
+		padding-top: 1em;
+	}
+	nav {
+		top: 0;
+		right: 0;
+		width: 10%;
+		height: 100%;
+		background-color: transparent;
+	}
+	nav > a {
+		width: 100%;
+		height: 25%;
+	}
+
+	/* Adjust the the article main header */
+	body > article > h1 {
+		padding-top: 0.5em;
+	}
+
+	body > aside > section {
+		padding-top: 0;
+	}
+}
+
+/* average screen sizes / Tablets, laptops, desktops */
+@media screen and (min-width: 641px) {
+	/* Set a bigger base font-size */
+	body {
+		font-size: 16px;
+	}
+	/* Increase header height with padding and load a nice image in the background :) */
+	body > header {
+		padding: 4em 0;
+		background-image: url('../media/images/hva-tth-960.jpg');
+		background-repeat: no-repeat;
+		background-position: center -240px;
+	}
+	/* Enlarge the logo size and give a background-color to have it viewable against the nice background image */
+	body > header img {
+		width: 400px;
+		background-color: #eee;
+		background-color: rgba(239,239,239,0.9);
+	}
+
+	/* Set navigation to stick in the header at the bottom and set font-size to 1rem */
+	nav {
+		z-index: 100;
+		position: relative;
+		top: 4em;
+		height: 3em;
+		box-shadow: none;
+	}
+	nav > a {
+		font-size: 1em;
+		width: 15em;
+	}
+	nav > a[href="#extra-information"],
+	nav > a[href="#search"] {
+		display: none;
+	}
+
+	nav > ol {
+		right: -15em;
+		font-size: 16px;
+		width: 15em;
+	}
+	nav > ol:target {
+		right: 0;
+		box-shadow: 0 0 50px 10px #333;
+	}
+	/* Add more content on the screen so make room for the aside content */
+	body > article {
+		float: left;
+		overflow: hidden;
+	}
+
+	/* Adjust the the article main header */
+	body > article > h1 {
+		padding-top: 0.5em;
+	}
+
+	body > aside {
+		z-index: 1;
+		overflow: visible;
+		position: relative;
+		top: 0;
+		left: 0;
+		float: left;
+	}
+	body > aside > section {
+		padding: 0;
+		margin: 0;
+	}
+	body > footer > section:nth-of-type(4) {
+		float: left;
+		clear: none;
+		padding-top: 3.3em;
+		width: 50%;
+	}
+	body > footer > section:nth-of-type(3) {
+		clear: left;
+		float: left;
+		width: 50%;
+	}
+	body > footer > section:nth-of-type(3) p:nth-last-of-type(-n+3) {
+		margin: 0;
+	}
+
+}
+
+@media screen and (min-width: 961px) {
+	body > header {
+		background-image: url('../media/images/hva-tth-1280.jpg');
+		background-position: center -360px;
+	}
+	body > header > img {
+		width: 640px;
+	}
+	/* Add more content on the screen so make room for the aside content */
+	body > article {
+		float: left;
+		overflow: hidden;
+		width: 73%;
+		padding: 1%;
+	}
+
+	/* Adjust the the article main header */
+	body > article > h1 {
+		padding-top: 0.5em;
+	}
+
+	body > aside {
+		z-index: 1;
+		overflow: visible;
+		position: relative;
+		top: 0;
+		left: 0;
+		float: right;
+		width: 23%;
+		padding: 1%;
+		font-size: 0.75em;
+		line-height: 150%;
+	}
+	body > aside > section {
+		padding: 0;
+		margin: 0;
+	}
+	body > footer > section:nth-of-type(4) {
+		float: right;
+		padding-top: 3em;
+		width: 50%;
+	}
+	body > footer > section:nth-of-type(3) {
+		clear: left;
+		float: left;
+		width: 50%;
+	}
+	body > footer > section:nth-of-type(3) p:nth-last-of-type(-n+3) {
+		margin: 0;
+	}
+	body > footer > section > ol > li {
+		float: left;
+		margin: 0;
+		padding: 0 0 0.5em 0;
+		width: 25%;
+	}
+}
+
+/* Full HD and retina quality screen sizes */
+@media screen and (min-width: 1281px) {
+	/* Set a bigger base font-size */
+	body {
+		font-size: 20px;
+	}
+}
+
+
+/*****************
+ CONTENT SPECIFIC
+*****************/
+	/* form specific */
+	form {
+		padding: 0 10px;
+		text-align: right;
+	}
+	fieldset {
+		border-width: 0;
+		padding: 0;
+		margin: 0;
+	}
+
+	form > fieldset {
+		margin-bottom: 1em;
+		text-align: left;
+	}
+/*
+	fieldset > fieldset > fieldset {
+		float: left;
+		width: 50%;
+	}
+*/
+	fieldset legend {
+		font-size: 1.5em;
+		padding: 0;
+		margin-bottom: 10px;
+	}
+	fieldset > fieldset legend {
+		font-size: inherit;
+		margin: 0;
+	}
+	fieldset[name*="register_"] {
+		position: relative;
+		margin-top: 3em;
+		padding: 10px 20px 10px 10px;
+		background-color: #eee;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		-webkit-box-shadow: 0 0 5px 0 #999;
+		box-shadow: 0 0 5px 0 #999;
+	}
+	fieldset[name*="register_"] > legend {
+		position: absolute;
+		top: -1.3em;
+		font-size: 1.5em;
+		padding: 5px;
+		margin-bottom: 10px;
+		background-color: #eee;
+		-webkit-border-top-left-radius: 10px;
+		-webkit-border-top-right-radius: 10px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		-webkit-box-shadow: 0 -2px 2px 0 #999;
+		box-shadow: 0 -2px 2px 0 #999;
+	}
+	fieldset[name*="_participants"] {
+		position: relative;
+		width: 100%;
+		padding: 5px;
+		margin-top: 1.5em;
+		margin-bottom: 1em;
+		border: 1px solid #999;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		background-color: #fff;
+	}
+	fieldset[name*="_participants"] legend {
+		position: absolute;
+		top: -1.5em;
+		left: 0;
+		font-weight: bold;
+	}
+	fieldset[name*="_participants"] > label {
+		display: inline-block;
+		font-weight: normal;
+		margin-right: 1em;
+	}
+
+	label {
+		display: block;
+		font-weight: bold;
+	}
+
+	input, select, textarea {
+		margin: 0 0 1em 0;
+		padding: 0.25em;
+		font-weight: normal;
+		font-family: inherit;
+		font-size: 1em;
+		color: inherit;
+		background-color: #fff;
+		border: 1px solid #999;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		outline: none;
+	}
+	textarea {
+		width: 100%;
+		min-height: 6em;
+		line-height: 1.2em;
+	}
+
+	input[type="checkbox"] {
+		margin: 5px;
+	}
+	input[type="checkbox"]:focus {
+		-webkit-box-shadow: 0 0 5px 0 #f60;
+		box-shadow: 0 0 5px 0 #e60;
+	}
+
+	input[type="submit"], input[type="button"], button {
+		color: inherit;
+		border: 1px solid #f60;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+		cursor: pointer;
+		-webkit-transition:  all 0.5s ease;
+		-moz-transition:  all 0.5s ease;
+		-o-transition:  all 0.5s ease;
+		transition:  all 0.5s ease;
+	}
+	input[type="submit"]:hover, input[type="submit"]:focus, input[type="button"]:hover, input[type="button"]:focus, button:hover {
+		color: #fff;
+		background-color: #f60;
+	}
+
+	input:not([type="submit"]):focus, textarea:focus, select:focus {
+		background-color: #e60;
+		background-color: rgba(239,96,0,0.1);
+		border-color: #000;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+		-webkit-transition:  all 0.25s ease;
+		-moz-transition:  all 0.25s ease;
+		-o-transition:  all 0.25s ease;
+		transition:  all 0.25s ease;
+	}
