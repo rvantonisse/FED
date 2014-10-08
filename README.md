@@ -11,6 +11,7 @@ The final assignment was to create a responsive website.
 1. HTML5
 	* HTML5 specfic tags
 	* HTML5 forms
+	* Semantic mark-up
 2. CSS3
 	* Selectors
 	* border-radius
